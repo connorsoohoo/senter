@@ -15,7 +15,7 @@ from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 CALTECH_FILE = 'caltech.csv'
 
-def plot_sentiments(filename):
+def plot_sentiments(filename, outfilename):
     # --- examples -------
     sentences = []
     timestamps = []
@@ -78,13 +78,15 @@ def plot_sentiments(filename):
 
     # res = [[1, 2, 3, 4, 5], ['a', 'b', 'c', 'd', 'e']]
     my_df = pd.DataFrame(output, columns = ["confession", "compound", "positive", "negative", "neutral", "timestamp"])
-    my_df.to_csv('out.csv', index=False, header=True)
+    my_df.to_csv(outfilename, index=False, header=True)
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Plots sentiment data from csv")
     parser.add_argument('-i', '--input', action='store', dest='filename', type=str, required=True,
                         help="Path to CSV input")
+    parser.add_argument('-o', '--output', action='store', dest='outfilename', type=str, required=True,
+                        help="Path to CSV output")
     args = parser.parse_args()
 
-    plot_sentiments(args.filename)
+    plot_sentiments(args.filename, args.outfilename)
