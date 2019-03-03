@@ -18,7 +18,8 @@ def parse_confessions(number, raw, confessed, confession_number):
             # According to format
             # confession_number = "#" + str(number)
             pattern = re.compile(confession_number)
-            if pattern.match(line):
+            match = pattern.match(line)
+            if match:
                 # Found new confession, confession_number separated by confession
                 # with space
                 date_line = lines[idx - 1]
@@ -28,7 +29,7 @@ def parse_confessions(number, raw, confessed, confession_number):
                     # print(idx)
                     date_object = datetime.strptime(date_line[:-4], '%B %d at %I:%M %p')
                     date = date_object.strftime('%m/%d/2019 %H:%M:%S')
-                    confession = date + ", " + line[len(confession_number) + 1:]
+                    confession = date + ", " + line[len(match.group(0)) + 1:]
                     number -= 1
                     in_confession = True
             else:
