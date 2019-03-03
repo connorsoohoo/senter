@@ -18,19 +18,25 @@ CALTECH_FILE = 'caltech.csv'
 def plot_sentiments(filename):
     # --- examples -------
     sentences = []
+    timestamps = []
     output = []
     # first row is timestamp, second row is confession
 
     # df = pd.read_csv(fileName, header=0, sep=u",", index_col=None)
 
     # sentences = df.as_matrix
-    df = pd.read_csv(filename, header=None, sep=u",", index_col=None)
-    sentences = df[1].tolist()
-    timestamps = df[0].tolist()
-    # with open(fileName) as f:
-    #     lines = f.readlines()
-    #     for line in lines:
-    #         sentences.append(line.split(',', 1))
+    #here
+    # df = pd.read_csv(filename, header=None, sep=u",", index_col=None)
+    # sentences = df[1].tolist()
+    # timestamps = df[0].tolist()
+    #here
+    with open(filename) as f:
+        lines = f.readlines()
+        for line in lines:
+            pair = line.split(',',1)
+            sentences.append(pair[1])
+            timestamps.append(pair[0])
+            # sentences.append(line.split(',', 1))
             # print(sentences[1])
 
     # with open(fileName) as csvDataFile:
