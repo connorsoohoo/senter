@@ -11,15 +11,28 @@
      <link rel="stylesheet" href="node_modules/n3-charts/build/LineChart.css">
    </head>
    <body ng-controller='MainCtrl'>
-    <h1 class="page-title">Senter </h1>
+    <h1 class="page-title"  id="yeet">Senter </h1>
     <h2 class="page-subtitle">Real-time mental health analysis from college confession pages</h2>
 
      <div class="my-chart">
        <center><linechart data="data" options="options"></linechart></center>
      </div>
  
-     <script type="text/javascript">
- 
+     <!-- <script src='https://d3js.org/d3.v4.min.js'></script> -->
+
+     <!-- <script type="text/javascript">
+
+        // d3.csv("mitout_smoothed.csv", function(data) {
+      
+      </script> -->
+
+     <script type="text/javascript">     
+         //  open -a "Google Chrome" --args --allow-file-access-from-files
+          var dataset = [];
+          d3.csv("mitout_smoothed.csv", function(data) {
+           dataset.push(data);
+        });
+        console.log(dataset);
        angular
          .module('app', ['n3-line-chart'])
  
@@ -97,7 +110,7 @@
            };
          });
      </script>
-      <h3 class="page-subtitle2">we used NLP/sentiment analysis!! ya yeet</h2>
+      <h3 class="page-subtitle2">Compare the emotional wellbeing of different colleges</h2>
    </body>
  </html>
 
