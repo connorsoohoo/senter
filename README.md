@@ -1,6 +1,6 @@
 # Senter
 
-
+![Home](home.png)
 
 ## Inspiration
 "Caltech Confessions" and similar confession pages at other universities provide public platforms for anonymous community members to express whatever they like, from humor to gratitude to deep secrets. When change happens on campus, like when the new Hameetman student center opened, we find ourselves scrolling through Caltech Confessions to see the reactions of our peers.
