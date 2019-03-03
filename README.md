@@ -1,4 +1,5 @@
 # Senter
+Try out senter [here](https://htmlpreview.github.io/?https://github.com/connorsoohoo/senter/blob/master/index.html)!
 
 ![Home](home.png)
 
