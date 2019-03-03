@@ -6,7 +6,7 @@ from datetime import datetime
 # number = 20584
 # raw = 'mit_confessions.txt'
 
-def parse_confessions(number, raw, confessed, confession_number):
+def parse_confessions(raw, confessed, confession_number):
     confessions = []
     with open(raw, "r") as f:
         lines = f.readlines()
@@ -29,8 +29,7 @@ def parse_confessions(number, raw, confessed, confession_number):
                     # print(idx)
                     date_object = datetime.strptime(date_line[:-4], '%B %d at %I:%M %p')
                     date = date_object.strftime('%m/%d/2019 %H:%M:%S')
-                    confession = date + ", " + line[len(match.group(0)) + 1:]
-                    number -= 1
+                    confession = date + ", \"" + line[len(match.group(0)) + 1:] + '\"'
                     in_confession = True
             else:
                 if in_confession:
@@ -54,10 +53,9 @@ def parse_confessions(number, raw, confessed, confession_number):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
 
-    parser.add_argument("-n", "--number", action="store", help="Hardcode the first confession number in file", dest="number", type=int, required=True)
     parser.add_argument("-i", "--input", action="store", dest="raw", type=str, required=True)
     parser.add_argument("-o", "--output", action="store", dest="confessed", type=str, required=True)
     parser.add_argument("-r", "--regex", action="store", help="Regex for numbering format", dest="confession_number", type=str, required=True)
 
     args = parser.parse_args()
-    parse_confessions(args.number, args.raw, args.confessed, args.confession_number)
+    parse_confessions(args.raw, args.confessed, args.confession_number)
